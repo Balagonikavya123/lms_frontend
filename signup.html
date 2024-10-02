@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Signup</title>
+    
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(51, 49, 49);
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #111;
+            color: white;
+            width: 200px;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            left: -200px; /* Initially hide the sidebar */
+            top: 0;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #575757;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        nav {
+            padding: 10px;
+            background-color: black;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+
+        .toggle-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Login Container Styling */
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin-top: 70px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #111;
+            border-radius: 4px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .reset-button {
+            background-color: #f44336;
+        }
+
+        .signup-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-container a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav>
+        <button id="toggleBtn" class="toggle-btn">☰</button>
+        <h1 style="color: white; font-size: 1.1em;">
+            <i class="fa-solid fa-graduation-cap" style="margin-right: 10px;"></i>
+            Learning Management System
+        </h1>
+    </nav>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        <button id="closeBtn" class="close-btn">×</button>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="quizzes.html"><i class="fas fa-tasks"></i> Quizzes</a></li>
+            <li><a href="assignments.html"><i class="fas fa-file-alt"></i> Assignments</a></li>
+            <li><a href="attendance.html"><i class="fas fa-user-check"></i> Attendance</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </div>
+
+    <!-- Signup Form Section -->
+    <div class="login-container">
+        <form id="signupForm">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <label for="username">
+                    <i class="fa-solid fa-user"></i> Enter Username:
+                </label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">
+                    <i class="fa-solid fa-envelope"></i> Enter Email:
+                </label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">
+                    <i class="fa-solid fa-lock"></i> Enter Password:
+                </label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="rePassword">
+                    <i class="fa-solid fa-lock"></i> Re-enter Password:
+                </label>
+                <input type="password" id="rePassword" name="rePassword" required>
+            </div>
+            <div class="input-group">
+                <label for="courseStudying">
+                    <i class="fa-solid fa-book-open"></i> Degree:
+                </label>
+                <input type="text" id="courseStudying" name="courseStudying" required>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="button">Sign up</button>
+                <button type="reset" class="button reset-button">Reset</button>
+            </div>
+            <div class="signup-container">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- JavaScript for Sidebar and Signup Functionality -->
+    <script>
+        // Sidebar toggle functionality
+        const closeBtn = document.getElementById('closeBtn');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const sidebar = document.querySelector('.sidebar');
+
+        closeBtn.addEventListener('click', function() {
+            sidebar.style.left = '-200px';
+        });
+
+        toggleBtn.addEventListener('click', function() {
+            sidebar.style.left = '0';
+        });
+
+        // Handle signup form submission
+        const signupForm = document.getElementById('signupForm');
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const rePassword = document.getElementById('rePassword').value;
+            const courseStudying = document.getElementById('courseStudying').value;
+
+            // Check if passwords match
+            if (password !== rePassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Store user details in localStorage
+            localStorage.setItem('user', JSON.stringify({ username, email, password, courseStudying }));
+            alert('Signup successful! Please login now.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
